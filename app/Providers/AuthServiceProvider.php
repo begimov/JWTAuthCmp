@@ -13,6 +13,10 @@ class AuthServiceProvider extends AbstractServiceProvider
 
     public function register()
     {
-        //
+        $container = $this->getContainer();
+
+        $container->share(Auth::class, function() {
+            return new Auth();
+        });
     }
 }
