@@ -5,4 +5,4 @@ use App\Controllers\Auth\LoginController;
 
 $app->get('/', HomeController::class . ':index');
 
-$app->post('/auth/login', LoginController::class . ':index');
+$app->post('/auth/login', LoginController::class . ':login');

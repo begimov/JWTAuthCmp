@@ -17,7 +17,7 @@ class LoginController extends Controller
     //     $this->auth = $auth;
     // }
 
-    public function index(Request $request, Response $response, $args)
+    public function login(Request $request, Response $response, $args)
     {
         // if (!$token = $this->auth->attempt($request->email, $request->password))) {
         //     return $response->withStatus(401);
