@@ -7,15 +7,16 @@ use Psr\Http\Message\{
     ServerRequestInterface as Request,
     ResponseInterface as Response
 };
+use App\Auth\Jwt\Auth;
 
 class LoginController extends Controller
 {
-    // protected $auth;
+    protected $auth;
 
-    // public function __construct(Auth $auth)
-    // {
-    //     $this->auth = $auth;
-    // }
+    public function __construct(Auth $auth)
+    {
+        $this->auth = $auth;
+    }
 
     public function login(Request $request, Response $response, $args)
     {
