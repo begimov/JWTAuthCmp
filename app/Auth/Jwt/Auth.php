@@ -2,6 +2,7 @@
 
 namespace App\Auth\Jwt;
 
+use App\Auth\Jwt\Factory;
 use App\Auth\Contracts\JwtSubjectInterface;
 use App\Auth\Providers\Auth\AuthProviderInterface;
 
@@ -9,9 +10,12 @@ class Auth
 {
     protected $auth;
 
-    public function __construct(AuthProviderInterface $auth)
+    protected $factory;
+
+    public function __construct(AuthProviderInterface $auth, Factory $factory)
     {
-        $this->auth = $auth;    
+        $this->auth = $auth;
+        $this->factory = $factory;
     }
 
     public function attempt($email, $password)
