@@ -8,7 +8,13 @@ class Auth
 {
     public function attempt($email, $password)
     {
-        $user = User::where('email', $email)->first();
+        if (!$user = User::where('email', $email)->first()) {
+            return null;
+        }
+
+        if (!password_verify($password, $user->password)) {
+            return null;
+        }
 
         return $user->email;
     }

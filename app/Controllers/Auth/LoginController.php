@@ -20,7 +20,7 @@ class LoginController extends Controller
 
     public function login(Request $request, Response $response, $args)
     {
-        if (!$token = $this->auth->attempt('begimov@gmail.com', 'password')) {
+        if (!$token = $this->auth->attempt('begimov@gmail.com', '123456')) {
             return $response->withJson([
                 'error' => 'Failed to authenticate'
             ], 401);
