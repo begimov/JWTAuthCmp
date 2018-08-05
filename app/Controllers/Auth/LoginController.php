@@ -10,10 +10,23 @@ use Psr\Http\Message\{
 
 class LoginController extends Controller
 {
+    // protected $auth;
+
+    // public function __construct(Auth $auth)
+    // {
+    //     $this->auth = $auth;
+    // }
+
     public function index(Request $request, Response $response, $args)
     {
+        // if (!$token = $this->auth->attempt($request->email, $request->password))) {
+        //     return $response->withStatus(401);
+        // }
+
         return $response->withJson([
-            'data' => 'login'
+            'data' => [
+                'token' => 'token'
+            ]
         ]);
     }
 }
