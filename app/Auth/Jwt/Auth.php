@@ -2,6 +2,7 @@
 
 namespace App\Auth\Jwt;
 
+use App\Auth\Contracts\JwtSubjectInterface;
 use App\Auth\Providers\Auth\AuthProviderInterface;
 
 class Auth
@@ -19,6 +20,23 @@ class Auth
             return null;
         }
 
-        return 'token';
+        return $this->fromSubject($user);
+    }
+
+    protected function fromSubject(JwtSubjectInterface $subject)
+    {
+        return $this->preparePayload($subject);
+    }
+
+    protected function preparePayload(JwtSubjectInterface $subject)
+    {
+        return $this->getSubjectClaims($subject);
+    }
+
+    protected function getSubjectClaims(JwtSubjectInterface $subject)
+    {
+        return [
+            'sub' => $subject->getJwtId()
+        ];
     }
 }
