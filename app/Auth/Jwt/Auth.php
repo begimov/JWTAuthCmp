@@ -29,12 +29,12 @@ class Auth
 
     protected function fromSubject(JwtSubjectInterface $subject)
     {
-        return $this->preparePayload($subject);
+        return $this->generatePayload($subject);
     }
 
-    protected function preparePayload(JwtSubjectInterface $subject)
+    protected function generatePayload(JwtSubjectInterface $subject)
     {
-        return $this->getSubjectClaims($subject);
+        return $this->factory->withClaims($this->getSubjectClaims($subject))->make();
     }
 
     protected function getSubjectClaims(JwtSubjectInterface $subject)
