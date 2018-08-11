@@ -22,12 +22,12 @@ class AuthServiceProvider extends AbstractServiceProvider
 
             $claimsFactory = new ClaimsFactory(
                 $container->get('request'),
-                $container->get('settings')->get('jwt')
+                $jwtSettings = $container->get('settings')->get('jwt')
             );
 
             return new Auth(
                 new EloquentAuthProvider(),
-                new Factory($claimsFactory)
+                new Factory($claimsFactory, $jwtSettings)
             );
 
         });
