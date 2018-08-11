@@ -3,6 +3,8 @@
 namespace App\Auth\Jwt;
 
 use Carbon\Carbon;
+use Slim\Settings;
+use Slim\Http\Request;
 
 class ClaimsFactory
 {
@@ -10,9 +12,15 @@ class ClaimsFactory
         'iss', 'iat', 'nbf', 'jti', 'exp'
     ];
 
-    public function __construct($request, $settings)
+    protected $request;
+
+    protected $settings;
+
+    public function __construct(Request $request, Settings $settings)
     {
-        //
+        $this->request = $request;
+
+        $this->settings = $settings;
     }
 
     public function getDefaultClaims()
