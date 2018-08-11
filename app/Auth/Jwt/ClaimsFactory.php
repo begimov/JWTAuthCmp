@@ -38,7 +38,7 @@ class ClaimsFactory
 
     public function iss()
     {
-        return 'http://jwtauthcmp.test/auth/login';
+        return (string) $this->request->getUri();
     }
 
     public function iat()
