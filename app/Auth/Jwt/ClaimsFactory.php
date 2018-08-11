@@ -53,7 +53,7 @@ class ClaimsFactory
 
     public function jti()
     {
-        return bin2hex(str_random(32));
+        return bin2hex(random_bytes(32));
     }
 
     public function exp()
