@@ -3,6 +3,6 @@
 use App\Controllers\HomeController;
 use App\Controllers\Auth\LoginController;
 
-$app->get('/', HomeController::class . ':index');
+$app->get('/', HomeController::class . ':index')->add(new \App\Middleware\Authenticate());
 
 $app->post('/auth/login', LoginController::class . ':login');
