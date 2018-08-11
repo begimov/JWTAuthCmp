@@ -33,8 +33,8 @@ class Factory
         return array_merge($this->claims, $defaultClaims);
     }
 
-    public function encode()
+    public function encode(array $claims)
     {
-        //
+        return $claims;
     }
 }

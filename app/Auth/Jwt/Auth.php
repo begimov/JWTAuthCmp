@@ -29,7 +29,7 @@ class Auth
 
     protected function fromSubject(JwtSubjectInterface $subject)
     {
-        return $this->generatePayload($subject);
+        return $this->factory->encode($this->generatePayload($subject));
     }
 
     protected function generatePayload(JwtSubjectInterface $subject)
