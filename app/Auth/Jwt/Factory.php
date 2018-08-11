@@ -15,6 +15,7 @@ class Factory
     public function __construct(ClaimsFactory $claimsFactory, array $settings)
     {
         $this->claimsFactory = $claimsFactory;
+        
         $this->settings = $settings;
     }
 
