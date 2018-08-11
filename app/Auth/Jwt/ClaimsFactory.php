@@ -10,6 +10,11 @@ class ClaimsFactory
         'iss', 'iat', 'nbf', 'jti', 'exp'
     ];
 
+    public function __construct($request, $settings)
+    {
+        //
+    }
+
     public function getDefaultClaims()
     {
         return $this->defaultClaims;

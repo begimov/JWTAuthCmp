@@ -18,11 +18,18 @@ class AuthServiceProvider extends AbstractServiceProvider
     {
         $container = $this->getContainer();
 
-        $container->share(Auth::class, function() {
+        $container->share(Auth::class, function() use ($container) {
+
+            $claimsFactory = new ClaimsFactory(
+                $container->get('request'),
+                $container->get('settings')
+            );
+
             return new Auth(
                 new EloquentAuthProvider(),
-                new Factory(new ClaimsFactory())
+                new Factory($claimsFactory)
             );
+
         });
     }
 }
