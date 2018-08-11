@@ -2,8 +2,6 @@
 
 namespace App\Auth\Jwt;
 
-use Carbon\Carbon;
-
 class Factory
 {
     protected $claims = [];
