@@ -6,6 +6,15 @@ use Carbon\Carbon;
 
 class ClaimsFactory
 {
+    protected $defaultClaims = [
+        'iss', 'iat', 'nbf', 'jti', 'exp'
+    ];
+
+    public function getDefaultClaims()
+    {
+        return $this->defaultClaims;
+    }
+
     public function iss()
     {
         return 'http://jwtauthcmp.test/auth/login';
