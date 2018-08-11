@@ -2,7 +2,7 @@
 
 namespace App\Auth\Jwt;
 
-use Firebase\JWT\JWT;
+use App\Auth\Providers\Jwt\JwtProviderInterface;
 
 class Factory
 {
@@ -10,13 +10,13 @@ class Factory
 
     protected $claimsFactory;
 
-    protected $settings;
+    protected $jwtProvider;
 
-    public function __construct(ClaimsFactory $claimsFactory, array $settings)
+    public function __construct(ClaimsFactory $claimsFactory, JwtProviderInterface $jwtProvider)
     {
         $this->claimsFactory = $claimsFactory;
         
-        $this->settings = $settings;
+        $this->jwtProvider = $jwtProvider;
     }
 
     public function withClaims(array $claims)
@@ -41,6 +41,6 @@ class Factory
 
     public function encode(array $claims)
     {
-        return JWT::encode($claims, $this->settings['secret'], $this->settings['algo']);
+        return $this->jwtProvider->encode($claims);
     }
 }
