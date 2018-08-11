@@ -22,7 +22,15 @@ class Factory
 
     public function make()
     {
-        return $this->claims;
+        $defaultClaims = array_reduce($this->claimsFactory->getDefaultClaims(), function($claims, $claim) {
+            
+            $claims[$claim] = $this->claimsFactory->{$claim}();
+
+            return $claims;
+
+        }, []);
+
+        return array_merge($this->claims, $defaultClaims);
     }
 
     public function encode()
