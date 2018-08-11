@@ -32,9 +32,11 @@ class Authenticate
 
     protected function getAuthorizationHeader($request)
     {
-        if (!list($header) = $request->getHeader('Authorization', false)) {
+        if (empty($headers = $request->getHeader('Authorization'))) {
             return false;
         }
+
+        list($header) = $headers;
 
         return $header;
     }

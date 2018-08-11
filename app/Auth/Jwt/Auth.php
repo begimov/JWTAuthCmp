@@ -27,6 +27,11 @@ class Auth
         return $this->fromSubject($user);
     }
 
+    public function authenticate($header)
+    {
+        return;
+    }
+
     protected function fromSubject(JwtSubjectInterface $subject)
     {
         return $this->factory->encode($this->generatePayload($subject));
