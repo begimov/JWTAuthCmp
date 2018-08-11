@@ -40,6 +40,6 @@ class Factory
 
     public function encode(array $claims)
     {
-        return JWT::encode($claims, $this->settings['JWT_SECRET'], $this->settings['JWT_ALGO']);
+        return JWT::encode($claims, $this->settings['secret'], $this->settings['algo']);
     }
 }

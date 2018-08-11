@@ -26,7 +26,9 @@ $container->get('settings')->set('db', [
 $container->get('settings')->set('displayErrorDetails', true);
 
 $container->get('settings')->set('jwt', [
-    'expiry' => getenv('JWT_EXPIRY')
+    'expiry' => getenv('JWT_EXPIRY'),
+    'secret' => getenv('JWT_SECERT'),
+    'algo' => getenv('JWT_ALGO')
 ]);
 
 $capsule = new Illuminate\Database\Capsule\Manager;
