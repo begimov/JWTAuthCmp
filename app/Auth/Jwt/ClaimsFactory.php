@@ -3,8 +3,7 @@
 namespace App\Auth\Jwt;
 
 use Carbon\Carbon;
-use Slim\Settings;
-use Slim\Http\Request;
+use Psr\Http\Message\RequestInterface;
 
 class ClaimsFactory
 {
@@ -16,7 +15,7 @@ class ClaimsFactory
 
     protected $settings;
 
-    public function __construct(Request $request, Settings $settings)
+    public function __construct(RequestInterface $request, array $settings)
     {
         $this->request = $request;
 
@@ -59,6 +58,6 @@ class ClaimsFactory
 
     public function exp()
     {
-        return Carbon::now()->addMinutes(10)->getTimestamp();
+        return Carbon::now()->addMinutes($this->settings['expiry'])->getTimestamp();
     }
 }

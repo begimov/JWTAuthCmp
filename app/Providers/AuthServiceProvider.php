@@ -22,7 +22,7 @@ class AuthServiceProvider extends AbstractServiceProvider
 
             $claimsFactory = new ClaimsFactory(
                 $container->get('request'),
-                $container->get('settings')
+                $container->get('settings')->get('jwt')
             );
 
             return new Auth(
