@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Auth\Jwt\Auth;
 use App\Auth\Jwt\Factory;
+use App\Auth\Jwt\ClaimsFactory;
 use App\Auth\Providers\Auth\EloquentAuthProvider;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
@@ -20,7 +21,7 @@ class AuthServiceProvider extends AbstractServiceProvider
         $container->share(Auth::class, function() {
             return new Auth(
                 new EloquentAuthProvider(),
-                new Factory()
+                new Factory(new ClaimsFactory())
             );
         });
     }

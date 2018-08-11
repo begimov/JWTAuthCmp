@@ -6,6 +6,13 @@ class Factory
 {
     protected $claims = [];
 
+    protected $claimsFactory;
+
+    public function __construct(ClaimsFactory $claimsFactory)
+    {
+        $this->claimsFactory = $claimsFactory;
+    }
+
     public function withClaims(array $claims)
     {
         $this->claims = $claims;
@@ -15,13 +22,7 @@ class Factory
 
     public function make()
     {
-        return array_merge($this->claims, [
-            'iss' => 'http://jwtauthcmp.test/auth/login',
-            'iat' => $now = Carbon::now()->getTimestamp(),
-            'nbf' => $now,
-            'jti' => bin2hex(str_random(32)),
-            'exp' => Carbon::now()->addMinutes(10)->getTimestamp()
-        ]);
+        return $this->claims;
     }
 
     public function encode()
