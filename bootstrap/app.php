@@ -25,6 +25,10 @@ $container->get('settings')->set('db', [
 
 $container->get('settings')->set('displayErrorDetails', true);
 
+$container->get('settings')->set('jwt', [
+    'expiry' => getenv('JWT_EXPIRY')
+]);
+
 $capsule = new Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($container->get('settings')->get('db'));
 $capsule->setAsGlobal();
