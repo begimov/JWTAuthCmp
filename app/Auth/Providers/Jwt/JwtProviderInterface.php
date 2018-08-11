@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\Jwt;
+namespace App\Auth\Providers\Jwt;
 
 interface JwtProviderInterface
 {
