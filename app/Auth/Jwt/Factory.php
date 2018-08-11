@@ -23,8 +23,8 @@ class Factory
     public function make()
     {
         $defaultClaims = array_reduce($this->claimsFactory->getDefaultClaims(), function($claims, $claim) {
-            
-            $claims[$claim] = $this->claimsFactory->{$claim}();
+
+            $claims[$claim] = $this->claimsFactory->get($claim);
 
             return $claims;
 

@@ -15,6 +15,15 @@ class ClaimsFactory
         return $this->defaultClaims;
     }
 
+    public function get($claim)
+    {
+        if (!method_exists($this, $claim)) {
+            return null;
+        }
+
+        return $this->{$claim}();
+    }
+
     public function iss()
     {
         return 'http://jwtauthcmp.test/auth/login';
